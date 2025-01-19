@@ -21,7 +21,7 @@ export default function HeroSection() {
             className="absolute inset-0 z-0"
             style={{
             backgroundImage: `url('/Images/hero.jpg')`, // Correct path
-            backgroundSize: 'contain',
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
             
             }}
