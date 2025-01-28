@@ -34,7 +34,7 @@ export function UserProfileDropdown({ user, isBlackTextPage }) {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 bg-blue-100 font-custom" align="end" forceMount>
+      <DropdownMenuContent className="w-56 bg-white text-black mt-2 font-custom rounded-xl" align="end" forceMount>
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">{user.name}</p>
