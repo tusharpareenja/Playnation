@@ -67,7 +67,7 @@ function CountingNumber({ value, duration = 2 }) {
 export default function VisionSection() {
   return (
     <section className="py-16 px-4 font-custom">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center">
         <div className="space-y-12">
           <div className="space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Our Vision and Core Values</h2>
