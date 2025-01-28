@@ -36,14 +36,14 @@ export default function Navbar() {
 
   // Define pages where the text should be black
   const isBlackTextPage = ["/about", "/workshops", "/esports", "/about"].includes(pathname);
-  const noBlackBgPages = ["/contact", "/workshops", "/esports", "/about"];
+  const noBlurBgPages = ["/contact", "/workshops", "/esports", "/about"];
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 font-custom right-0 z-50 transition-colors duration-300 border-b border-black${ 
-        (scrolled || isOpen) && !noBlackBgPages.includes(pathname) 
-        ? 'bg-black/90 backdrop-blur-sm ' // Add bottom border here
-        : 'bg-transparent' 
+      className={`fixed top-0 left-0 font-custom right-0 z-50 transition-colors duration-300 border-b border-black ${ 
+        (scrolled || isOpen) && !noBlurBgPages.includes(pathname) 
+        ? 'bg-black backdrop-blur-lg' // Apply blur background for all pages except noBlurBgPages
+        : 'backdrop-blur' 
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -65,7 +65,7 @@ export default function Navbar() {
         <div className="hidden md:flex gap-4">
           <Link 
             href="/join"
-            className={`rounded-md px-4 py-2 text-sm font-medium backdrop-blur-sm transition-colors ${
+            className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
               isBlackTextPage 
                 ? 'bg-black/10 text-black hover:bg-black/20' 
                 : 'bg-white/10 text-white hover:bg-white/20'
