@@ -3,9 +3,12 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { handleGoogleSignIn } from "./signinserver"
+import { useSession } from "next-auth/react"
+
 
 export default function HeroSection() {
   const [email, setEmail] = useState("")
+  const { data: session, status } = useSession() 
   const handleGoogleLogin = async () => {
     try {
       await handleGoogleSignIn()
@@ -73,8 +76,9 @@ export default function HeroSection() {
               className="rounded-md bg-blue-500 px-8 py-2 font-medium text-white transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               aria-label="Join Now"
             >
-              Join Now
+              {status=='authenticated'&& session.user ? 'Explore Tournaments' : 'Join Now'}
             </button>
+
           </motion.div>
         </div>
       </div>
