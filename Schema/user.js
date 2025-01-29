@@ -2,7 +2,7 @@ const { boolean, timestamp, pgTable, text, primaryKey, integer } = require("driz
 const postgres = require("postgres");
 const { drizzle } = require("drizzle-orm/postgres-js");
 
-const connectionString = "postgresql://neondb_owner:npg_zoa1vLu2qUEH@ep-late-rice-a8yicbo5-pooler.eastus2.azure.neon.tech/neondb?sslmode=require";
+const connectionString = "";
 const pool = postgres(connectionString, { max: 1 });
 
 const db = drizzle(pool);

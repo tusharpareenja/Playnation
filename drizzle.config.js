@@ -8,6 +8,6 @@ export default defineConfig({
   out: "./migration",
   schema: "./Schema/user.js",
   dbCredentials: {
-    url: process.env.DATABASE_URL || "postgresql://neondb_owner:npg_zoa1vLu2qUEH@ep-late-rice-a8yicbo5-pooler.eastus2.azure.neon.tech/neondb?sslmode=require"
+    url: process.env.DATABASE_URL
   }
 });
