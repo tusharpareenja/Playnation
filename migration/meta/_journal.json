@@ -8,6 +8,13 @@
       "when": 1738126013141,
       "tag": "0000_milky_beast",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1738217563182,
+      "tag": "0001_adorable_earthquake",
+      "breakpoints": true
     }
   ]
 }

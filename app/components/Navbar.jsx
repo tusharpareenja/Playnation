@@ -1,7 +1,5 @@
 'use client'
 
-"use client"
-
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
@@ -14,15 +12,31 @@ import { handleGoogleSignIn } from "./signinserver"
 import { Avatar, AvatarFallback, AvatarImage  } from "@/components/ui/avatar"
 import { User, LogOut, Settings, UserCircle } from "lucide-react";
 import { signOut } from "next-auth/react";
+import { OrganizeTournamentModal } from "./Admin"
+import useIsAdmin from "./Trying"
+import { useRouter } from "next/navigation"
+
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-  const { data: session, status } = useSession()
+  const { data: session, status } = useSession();
+  const isAdmin = useIsAdmin();
+  const router = useRouter()
+  
+  console.log("Session data: ", session?.user?.name);
+  console.log("Is Admin: ", isAdmin);
+
+  
+
 
   const handleGoogleLogin = async() => {
     await handleGoogleSignIn();
   }
+
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,8 +61,8 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  const isBlackTextPage = ["/about", "/workshops", "/esports", "/about"].includes(pathname)
-  const noBlurBgPages = ["/contact", "/workshops", "/esports", "/about"]
+  const isBlackTextPage = ["/about", "/workshops", "/esports", "/about", "/highlights"].includes(pathname)
+  const noBlurBgPages = ["/contact", "/workshops", "/esports", "/about", "/highlights"]
 
   return (
     <motion.nav
@@ -63,6 +77,7 @@ export default function Navbar() {
         <Link href="/" className={`text-2xl font-bold ${isBlackTextPage ? "text-black" : "text-white"}`}>
           CU PlayNation
         </Link>
+        
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-4">
@@ -88,16 +103,23 @@ export default function Navbar() {
             href="/highlights"
             className={`${isBlackTextPage ? "text-black hover:text-gray-600" : "text-white hover:text-purple-200"}`}
           >
-            Community Highlights
+            Highlights
           </Link>
+          {isAdmin && (<Button
+              onClick={() => router.push("/organize?open=true")}
+            className={`${isBlackTextPage ? "text-black hover:text-gray-600" : "text-white hover:text-purple-200"}`}
+          >
+             Organize
+          </Button>)}
         </div>
+        
 
         <div className="hidden md:flex items-center gap-4">
           {status === "authenticated" && session.user ? (
             <>
               <Link
                 href="/tournaments"
-                className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-xl px-4 py-2 text-sm font-medium transition-colors  ${
                   isBlackTextPage
                     ? "bg-black text-white hover:bg-gray-200"
                     : "bg-white text-purple-700 hover:bg-purple-100"
@@ -211,6 +233,7 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+      <OrganizeTournamentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </motion.nav>
   )
 }
