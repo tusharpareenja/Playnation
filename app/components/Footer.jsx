@@ -51,7 +51,7 @@ export function Footer() {
 
         {/* Bottom footer */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© 2024 CU PlayNation Gaming Club. All rights reserved.</p>
+          <p>© 2025 CU PlayNation Gaming Club. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/terms" className="hover:text-gray-600 transition-colors">
               Terms & Conditions

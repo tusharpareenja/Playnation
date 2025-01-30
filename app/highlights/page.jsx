@@ -71,9 +71,7 @@ function EventCard({ event, index }) {
           <h3 className="text-3xl font-bold text-gray-900 mb-4">{event.title}</h3>
           <p className="text-gray-600 mb-4">{event.date}</p>
           <p className="text-gray-700 leading-relaxed">{event.description}</p>
-          <button className="mt-6 px-8 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors duration-300">
-            Learn More
-          </button>
+         
         </motion.div>
       </div>
     </motion.div>

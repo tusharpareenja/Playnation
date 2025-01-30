@@ -4,6 +4,8 @@ import { Star } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { handleGoogleSignIn } from "./signinserver"
+import { useSession } from "next-auth/react"
 
 
 
@@ -53,6 +55,15 @@ const testimonials = [
 ]
 
 export default function TestimonialsSection() {
+  const { data: session, status } = useSession()
+  const handleGoogleLogin = async () => {
+    try {
+      await handleGoogleSignIn()
+      console.log("Google sign-in successful")
+    } catch (error) {
+      console.error("Error during Google sign-in:", error)
+    }
+  }
   return (
     <section className="py-16 px-4">
       <div className="container mx-auto max-w-6xl">
@@ -100,12 +111,14 @@ export default function TestimonialsSection() {
             opportunities!
           </p>
           <div className="flex gap-4 justify-center">
-            <Button variant="secondary" size="lg">
-              Join Now
-            </Button>
-            <Button variant="outline" size="lg" className="bg-transparent text-white hover:bg-blue-700">
-              Learn More
-            </Button>
+          <button
+              onClick={handleGoogleLogin}
+              className="rounded-xl bg-blue-500 px-8 py-2 font-medium  text-white transition-transform hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              aria-label="Join Now"
+            >
+              {status === "authenticated" && session?.user ? "Explore Tournaments" : "Join Now"}
+            </button>
+            
           </div>
         </div>
       </div>
