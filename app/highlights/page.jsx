@@ -8,9 +8,9 @@ import { useRef } from "react"
 const events = [
   {
     id: 1,
-    title: "GamesCom 2.0",
-    image: "/Images/event1.jpg",
-    date: "March 15, 2023",
+    title: "Valorant tournament",
+    image: "/Images/valorant.jpg",
+    date: "20 January, 2025",
     description:
       "An intensive valornant tournament held at Chandigarh University. With over 100 of participants competing with each other in teams.",
     align: "right",
@@ -18,18 +18,18 @@ const events = [
   {
     id: 2,
     title: "BGMI",
-    image: "/Images/event2.jpg",
-    date: "June 22, 2023",
+    image: "/Images/bgmi.jpg",
+    date: "25 January, 2025",
     description:
-      "An intensive BGMI tournament held at Chandigarh University in TechFest. With over 100 of participants competing with each other in teams.",
+      "An intensive BGMI tournament held at Chandigarh University. With over 100 of participants competing with each other in teams.",
     align: "left",
   },
   {
     id: 3,
     title: "Ludo Tournament",
     image: "/Images/event3.jpg",
-    date: "September 5, 2023",
-    description: "Another great e-sports tournament held in techfest of Ludo.",
+    date: "November 18, 2024",
+    description: "Another great e-sports tournament held in Chnadigarh University at techfest of Ludo.",
     align: "right",
   },
 ]
