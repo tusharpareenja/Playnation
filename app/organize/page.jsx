@@ -10,7 +10,9 @@ export default function OrganizePage() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (searchParams.get("open") === "true") {
+    const openParam = searchParams.get("open")
+    console.log("Search Params:", openParam) // Debugging the searchParams
+    if (openParam === "true") {
       setIsModalOpen(true)
     }
   }, [searchParams])
@@ -20,5 +22,10 @@ export default function OrganizePage() {
     router.push("/") // Redirect back to home page
   }
 
-  return <OrganizeTournamentModal isOpen={isModalOpen} onClose={handleCloseModal} />
+  return (
+    <OrganizeTournamentModal
+      isOpen={isModalOpen}
+      onClose={handleCloseModal}
+    />
+  )
 }
