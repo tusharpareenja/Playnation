@@ -11,15 +11,15 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-// Create ESLint configuration array by extending Next.js core web vitals rules
+// Create ESLint configuration array
 const eslintConfig = [
+  // Manually import and spread the Next.js configuration rules
   ...compat.extends("next/core-web-vitals"),
-  
+
   // Additional rules can be added here if needed
   {
-    // Example custom rule override:
-    "rules": {
-      "no-console": "warn", // Warn on console statements
+    rules: {
+      "no-console": "warn", // Example custom rule override
     },
   },
 ];

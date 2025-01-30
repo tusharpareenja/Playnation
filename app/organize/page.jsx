@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { OrganizeTournamentModal } from "../components/Admin"
 
-export default function OrganizePage() {
+function OrganizePageContent() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -27,5 +27,13 @@ export default function OrganizePage() {
       isOpen={isModalOpen}
       onClose={handleCloseModal}
     />
+  )
+}
+
+export default function OrganizePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OrganizePageContent />
+    </Suspense>
   )
 }
